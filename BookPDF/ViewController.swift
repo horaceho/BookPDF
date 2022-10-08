@@ -10,24 +10,63 @@ import PDFKit
 
 class ViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    @IBOutlet var pdfView: UIView!
+    @IBOutlet var boxView: UIView!
+    @IBOutlet var oneButton: UIButton!
+    @IBOutlet var twoButton: UIButton!
 
-        let pdfView = PDFView()
-
-        pdfView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(pdfView)
-
-        pdfView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
-        pdfView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
-        pdfView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
-        pdfView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
-
-        guard let path = Bundle.main.url(forResource: "WatchOS9", withExtension: "pdf") else { return }
-
-        if let document = PDFDocument(url: path) {
-            pdfView.document = document
-        }
+    override var prefersStatusBarHidden: Bool {
+         return true
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        print("viewWillAppear")
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        print("viewWillDisappear")
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+
+    @IBAction func clickButtonOne() {
+        print("One")
+    }
+
+    @IBAction func clickButtonTwo() {
+        print("Two")
+    }
+
+    @IBAction func clickButtonDebug() {
+        debugInfo()
+    }
+
+    @IBAction func handlePan(_ gesture: UIPanGestureRecognizer) {
+        let translation = gesture.translation(in: view)
+
+        guard let gestureView = gesture.view else {
+            return
+        }
+
+        gestureView.center = CGPoint(
+            x: gestureView.center.x + translation.x,
+            y: gestureView.center.y + translation.y
+        )
+
+        gesture.setTranslation(.zero, in: view)
+    }
+
+    func debugInfo() {
+        print("pdfView: w \(pdfView.frame.size.width) h \(pdfView.frame.size.height)")
+    }
+
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        debugInfo()
+        coordinator.animate(alongsideTransition: nil) { _ in
+            self.debugInfo()
+        }
+    }
 }

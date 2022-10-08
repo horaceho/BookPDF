@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -11,16 +12,81 @@
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="BookPDF" customModuleProvider="target" sceneMemberID="viewController">
-                    <button key="view" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="Iw4-Tg-HjP">
+                    <view key="view" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" id="Pb2-rP-AjH">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <state key="normal" title="Button"/>
-                        <buttonConfiguration key="configuration" style="plain" title="Hi"/>
-                    </button>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tGq-eu-0OU">
+                                <rect key="frame" x="75" y="302" width="240" height="240"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ObZ-GL-REE">
+                                        <rect key="frame" x="8" y="8" width="32" height="32"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="1"/>
+                                        <connections>
+                                            <action selector="clickButtonOne" destination="BYZ-38-t0r" eventType="touchDown" id="Mhz-ZE-lMf"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" preservesSuperviewLayoutMargins="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6St-KC-Ogb">
+                                        <rect key="frame" x="200" y="8" width="32" height="32"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="2"/>
+                                        <connections>
+                                            <action selector="clickButtonTwo" destination="BYZ-38-t0r" eventType="touchDown" id="usb-PI-q4F"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" preservesSuperviewLayoutMargins="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XAv-ax-wca">
+                                        <rect key="frame" x="104" y="8" width="33" height="35"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="?"/>
+                                        <connections>
+                                            <action selector="clickButtonDebug" destination="BYZ-38-t0r" eventType="touchDown" id="o7i-AS-ZpU"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="990-yR-l3o" appends="YES" id="RmM-W3-XYR"/>
+                                </connections>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="85w-E2-SHs">
+                                <rect key="frame" x="16" y="47" width="358" height="755"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" red="0.97231632471084595" green="0.95950621366500854" blue="0.89922624826431274" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="qfE-54-YvS"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <connections>
+                        <outlet property="boxView" destination="tGq-eu-0OU" id="5Tc-Zr-Afy"/>
+                        <outlet property="oneButton" destination="ObZ-GL-REE" id="4c4-1q-jrC"/>
+                        <outlet property="pdfView" destination="85w-E2-SHs" id="9Cu-TC-aAJ"/>
+                        <outlet property="twoButton" destination="6St-KC-Ogb" id="cP2-7e-Blq"/>
+                        <outlet property="view" destination="Pb2-rP-AjH" id="gOJ-Em-9gR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="990-yR-l3o">
+                    <connections>
+                        <action selector="handlePan:" destination="BYZ-38-t0r" id="aWQ-uX-thv"/>
+                    </connections>
+                </panGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="132" y="-34"/>
+            <point key="canvasLocation" x="130.76923076923077" y="-34.123222748815166"/>
         </scene>
     </scenes>
+    <color key="tintColor" systemColor="systemOrangeColor"/>
+    <resources>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
 </document>
